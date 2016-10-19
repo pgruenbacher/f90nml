@@ -410,6 +410,8 @@ class Namelist(OrderedDict):
             return self.f90complex(value)
         elif isinstance(value, str):
             return self.f90str(value)
+        elif isinstance(value, Repeat):
+            return '%d*%s' % (value.repeat, self.f90repr(value.item))
         elif value is None:
             return ''
         else:
@@ -443,3 +445,10 @@ class Namelist(OrderedDict):
         result = result.replace('\\\\', '\\')
 
         return result
+
+
+class Repeat(object):
+    def __init__(self, repeat, item):
+        self.repeat = repeat
+        self.item = item
+

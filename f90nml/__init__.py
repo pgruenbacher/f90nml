@@ -8,6 +8,7 @@
 """
 from f90nml.parser import Parser
 from f90nml.namelist import Namelist
+from f90nml.namelist import Repeat
 
 __version__ = '0.19'
 
